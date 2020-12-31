@@ -1,0 +1,253 @@
+$violet-blue-crayola: #7d72d5ff;
+$keppel: #77a39aff;
+$mint-green: #94fbab;
+$razzmatazz: #e43a72ff;
+$crimson: #d7263dff;
+$cardinal: #bf2239ff;
+$maize-crayola: #f3ca40ff;
+$cultured: #fcfafaff;
+$platinum: #e7e5dfff;
+$timberwolf: #d3d0cbff;
+$jet: #383843ff;
+$jet-two: #32323bff;
+$raisin-black: #1e1e24ff;
+$rich-black-fogra-39: #121113ff;
+$neon-blue: #6c76ff;
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200;400;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $platinum;
+  color: $raisin-black;
+  #header {
+    font-family: 'Quicksand', sans-serif;
+    text-align: center;
+    position: relative;
+    margin-bottom: 3em;
+    > * {
+      margin: 0;
+    }
+    h1 {
+      color: $keppel;
+    }
+    #receipt-img {
+      fill: $keppel;
+      width: 2.7em;
+      height: auto;
+      position: absolute;
+      top: 0.4em;
+      left: 0;
+    }
+  }
+  .main {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 1em;
+    .container {
+      background-color: $cultured;
+      padding: 0.2em 1em 2em 1em;
+      border-radius: 0.3em;
+      h3 {
+        font-family: 'Quicksand', sans-serif;
+        margin: 0;
+        padding: 0;
+        color: $raisin-black;
+      }
+      > * :not(h3) {
+        font-family: 'Dosis', sans-serif;
+        letter-spacing: 0.08rem;
+      }
+    }
+    .side-menu {
+      max-height: 50vh;
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      .menu {
+        #menu-list {
+          margin: 0;
+          padding: 0;
+          list-style-type: none;
+          .menu-item {
+            position: relative;
+            font-weight: bold;
+            color: #444;
+            padding: 0.5em 0.3em;
+            border-bottom: 1px solid $timberwolf;
+            &:hover {
+              cursor: pointer;
+              animation: menuItemBorder 0.2s forwards;
+              &::before {
+                content: '>';
+                color: $razzmatazz;
+                opacity: 0;
+                animation: menuItemArrow 0.2s forwards;
+                position: absolute;
+                left: -0.5em;
+              }
+            }
+          }
+        }
+      }
+    }
+    .center-window {
+      grid-column: 2/4;
+      .receipts {
+        #drop-area {
+          border: 2px dashed $keppel;
+          color: $keppel;
+          font-family: sans-serif;
+          padding: 0.3em 0;
+          width: 30vw;
+          margin: 0.4em auto;
+          text-align: center;
+          border-radius: 0.3em;
+          font-size: 2em;
+          &:focus {
+            outline: none;
+          }
+          &:hover {
+            cursor: pointer;
+            animation: dropArea 0.2s forwards;
+          }
+        }
+        .receipts-view {
+          .file-info {
+            text-align: center;
+            font-family: 'Quicksand', sans-serif;
+            .file-name {
+              display: block;
+            }
+          }
+          .receipt {
+            width: 30vw;
+            margin: auto;
+            margin-top: 2em;
+            background-color: $jet;
+            color: $cultured;
+            border-radius: 0.5em;
+            padding: 0.3em;
+            .receipt-head {
+              border-radius: 0.3em;
+              .controls {
+                float: right;
+                width: 5em;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                text-align: center;
+                .control {
+                  font-weight: bold;
+                  &:hover {
+                    cursor: pointer;
+                  }
+                }
+                .edit:hover {
+                  color: $mint-green;
+                }
+                .minimize:hover {
+                  color: $maize-crayola;
+                }
+                .close:hover {
+                  color: $razzmatazz;
+                }
+              }
+              .store {
+                margin: 0;
+                padding: 0.2em 0;
+              }
+              .total {
+                margin: 0;
+                padding-top: 0.2em;
+              }
+            }
+            .show {
+              animation: showItems 0.3s forwards;
+              visibility: visible;
+            }
+            .hide {
+              animation: hideItems 0.3s forwards;
+              visibility: hidden;
+            }
+            .items {
+              margin-top: 0.5em;
+              max-height: 70vh;
+              .item {
+                position: relative;
+                padding: 0.5em 0;
+                border-bottom: 1px solid $raisin-black;
+                &:hover {
+                  animation: receiptItemBorder 0.2s forwards;
+                  cursor: pointer;
+                }
+                .item-price {
+                  color: $mint-green;
+                  border-radius: 0.3rem;
+                  position: absolute;
+                  right: 0.2em;
+                  top: 0.3em;
+                  padding: 0.2rem;
+                  font-weight: bold;
+                }
+                .additional-info {
+                  .info-item {
+                    display: block;
+                    font-size: 0.7em;
+                    .total-off {
+                      color: $razzmatazz;
+                      font-weight: bold;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes dropArea {
+  to {
+    background-color: $keppel;
+    color: $cultured;
+  }
+}
+
+@keyframes menuItemBorder {
+  to {
+    border-color: $razzmatazz;
+  }
+}
+
+@keyframes menuItemArrow {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes receiptItemBorder {
+  to {
+    border-color: $keppel;
+    background-color: $jet-two;
+  }
+}
+
+@keyframes hideItems {
+  to {
+    display: none;
+    max-height: 0;
+  }
+}
+@keyframes showItems {
+  from {
+    max-height: 0;
+    display: none;
+  }
+  to {
+    display: block;
+    max-height: 70vh;
+  }
+}
