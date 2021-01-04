@@ -1,42 +1,46 @@
 import React from 'react'
-import { v4 } from 'uuid'
+import CalcContext from './calc-context'
 
 export default class Item extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.item = this.props.item
   }
 
-  formatItem(item) {
-    if (item.match('Rabatt:')) {
-      let split = item.split(' ')
-      return (
-        <span className="info-item" key={v4()}>
-          {split[0] + ' '}
-          <span className="total-off">{split[1]}</span>
-        </span>
-      )
-    }
-    return (
-      <span className="info-item" key={v4()}>
-        {item}
-      </span>
-    )
+  generateAdditionalItems() {
+    return this.item.additional.map((item) => {
+      if (item.title === 'Rabatt') {
+        return (
+          <span className="info-item">
+            {`${item.title}: `}
+            <span className="total-off">{item.body}</span>
+          </span>
+        )
+      }
+      return <span className="info-item">{`${item.title}: ${item.body}`}</span>
+    })
   }
 
   render() {
     return (
-      <div className="item" key={v4()}>
-        <span className="item-name">{this.props.content.name}</span>
-        <span className="item-price">{this.props.content.price}</span>
-        <div className="additional-info">
-          {this.props.content.additional
-            ? this.props.content.additional.map((addItem) =>
-                this.formatItem(addItem)
-              )
-            : null}
-        </div>
-      </div>
+      <CalcContext.Consumer>
+        {(calc) => {
+          return (
+            <div
+              className="item"
+              onClick={calc.mode ? () => calc.callback(this.item.price) : null}
+            >
+              <span className="item-name">{this.item.name}</span>
+              <span className="item-price" value={this.item.price}>
+                {this.item.price}
+              </span>
+              <div className="additional-info">
+                {this.generateAdditionalItems()}
+              </div>
+            </div>
+          )
+        }}
+      </CalcContext.Consumer>
     )
   }
 }

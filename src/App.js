@@ -1,4 +1,5 @@
 import React from 'react'
+import { v4 } from 'uuid'
 import Header from './components/header'
 import Container from './components/container'
 import Receipts from './components/receipts/receipts'
@@ -14,11 +15,13 @@ export default class App extends React.Component {
             containerClass="side-menu"
             title="Menu"
             content={<Menu />}
+            key={v4()}
           />
           <Container
             containerClass="center-window"
             title="Receipts"
             content={<Receipts />}
+            key={v4()}
           />
         </div>
       </div>

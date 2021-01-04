@@ -6,11 +6,14 @@ export default class Menu extends React.Component {
     return (
       <div className="menu">
         <ul id="menu-list">
-          <li className="menu-item" id={uuidv4()}>
-            My receipts
+          <li className="menu-item" key={uuidv4()}>
+            Import receipts
           </li>
-          <li className="menu-item" id={uuidv4()}>
-            Saved calculations
+          <li className="menu-item" key={uuidv4()}>
+            Saved receipts
+          </li>
+          <li className="menu-item" key={uuidv4()}>
+            Saved price calculations
           </li>
         </ul>
       </div>

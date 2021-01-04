@@ -76,10 +76,10 @@ body .main .side-menu .menu #menu-list .menu-item {
   color: #444;
   padding: 0.5em 0.3em;
   border-bottom: 1px solid #d3d0cbff;
+  cursor: pointer;
 }
 
 body .main .side-menu .menu #menu-list .menu-item:hover {
-  cursor: pointer;
   -webkit-animation: menuItemBorder 0.2s forwards;
           animation: menuItemBorder 0.2s forwards;
 }
@@ -110,6 +110,7 @@ body .main .center-window .receipts #drop-area {
   text-align: center;
   border-radius: 0.3em;
   font-size: 2em;
+  cursor: pointer;
 }
 
 body .main .center-window .receipts #drop-area:focus {
@@ -117,9 +118,12 @@ body .main .center-window .receipts #drop-area:focus {
 }
 
 body .main .center-window .receipts #drop-area:hover {
-  cursor: pointer;
   -webkit-animation: dropArea 0.2s forwards;
           animation: dropArea 0.2s forwards;
+}
+
+body .main .center-window .receipts .receipts-view {
+  position: relative;
 }
 
 body .main .center-window .receipts .receipts-view .file-info {
@@ -131,6 +135,37 @@ body .main .center-window .receipts .receipts-view .file-info .file-name {
   display: block;
 }
 
+body .main .center-window .receipts .receipts-view .receipts-toolbar {
+  position: absolute;
+  top: -7.2em;
+  right: -9.5em;
+  background-color: #fcfafaff;
+  justify-items: left;
+  border-radius: 0.5em;
+  padding: 0.2em;
+}
+
+body .main .center-window .receipts .receipts-view .receipts-toolbar .toolbar-button {
+  text-align: center;
+  border-radius: 0.5em;
+  cursor: pointer;
+  padding: 0.3em;
+  margin: 0.4em 0;
+  color: #fcfafaff;
+}
+
+body .main .center-window .receipts .receipts-view .receipts-toolbar #calc-total {
+  background-color: #6c76ff;
+}
+
+body .main .center-window .receipts .receipts-view .receipts-toolbar #remove {
+  background-color: #e43a72ff;
+}
+
+body .main .center-window .receipts .receipts-view .receipts-toolbar #save {
+  background-color: #77a39aff;
+}
+
 body .main .center-window .receipts .receipts-view .receipt {
   width: 30vw;
   margin: auto;
@@ -139,6 +174,8 @@ body .main .center-window .receipts .receipts-view .receipt {
   color: #fcfafaff;
   border-radius: 0.5em;
   padding: 0.3em;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 body .main .center-window .receipts .receipts-view .receipt .receipt-head {
@@ -157,13 +194,11 @@ body .main .center-window .receipts .receipts-view .receipt .receipt-head .contr
 
 body .main .center-window .receipts .receipts-view .receipt .receipt-head .controls .control {
   font-weight: bold;
-}
-
-body .main .center-window .receipts .receipts-view .receipt .receipt-head .controls .control:hover {
   cursor: pointer;
 }
 
-body .main .center-window .receipts .receipts-view .receipt .receipt-head .controls .edit:hover {
+body .main .center-window .receipts .receipts-view .receipt .receipt-head .controls .calculate:hover,
+body .main .center-window .receipts .receipts-view .receipt .receipt-head .controls .on {
   color: #94fbab;
 }
 
@@ -199,19 +234,18 @@ body .main .center-window .receipts .receipts-view .receipt .hide {
 
 body .main .center-window .receipts .receipts-view .receipt .items {
   margin-top: 0.5em;
-  max-height: 70vh;
 }
 
 body .main .center-window .receipts .receipts-view .receipt .items .item {
   position: relative;
   padding: 0.5em 0;
   border-bottom: 1px solid #1e1e24ff;
+  cursor: pointer;
 }
 
 body .main .center-window .receipts .receipts-view .receipt .items .item:hover {
   -webkit-animation: receiptItemBorder 0.2s forwards;
           animation: receiptItemBorder 0.2s forwards;
-  cursor: pointer;
 }
 
 body .main .center-window .receipts .receipts-view .receipt .items .item .item-price {
@@ -232,6 +266,14 @@ body .main .center-window .receipts .receipts-view .receipt .items .item .additi
 body .main .center-window .receipts .receipts-view .receipt .items .item .additional-info .info-item .total-off {
   color: #e43a72ff;
   font-weight: bold;
+}
+
+body .main .center-window .receipts .receipts-view .receipt .calc-container {
+  background-color: #6c76ff;
+  border-radius: 0.2em;
+  padding: 0.2em;
+  margin: 0.2em;
+  font-size: 1.4em;
 }
 
 @-webkit-keyframes dropArea {
